@@ -19,7 +19,7 @@ La fonction doit afficher toutes les possibilités dans le format suivant :
 
 La valeur de retour de la fonction doit être le nombre de solutions affichées. La suite se lit de gauche à droite. Le premier chiffre correspond à la position de la première dame dans la première colonne (l'index commençant à 0). Le énième chiffre correspond à la position de la énième dame dans la énième colonne. Si dans une colonne, on ne peut pas placer de dame, -1 sera affiché. La valeur minimum de X et Y est 1.
 
-##Explications du code :
+## Explications du code :
 Le code se compose de 2 fonctions principales is_safe et safe_queens
 
 is_safe return true/false si pour savoir si je peux placer un reine à un certain endroit. elle prend en parametre in et plat. Int est un entier qui définit l'emplacement de la reine à placé. plat est une liste qui donne l'emplacement des reines précédemment placées.
