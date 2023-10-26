@@ -83,3 +83,7 @@ heatmap <- function(data,row,col){
 
 ###################################################
 safe_queens(8,8)
+##
+## Ca marche pas !!!
+## j'ai des erreurs sur des x != y si mon echiquier est pas carré ou si >10
+##
