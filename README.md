@@ -22,7 +22,9 @@ Le code se compose de 2 fonctions principales is_safe et safe_queens
 is_safe return true/false si pour savoir si je peux placer un reine à un certain endroit. elle prend en parametre in et plat. Int est un entier qui définit l'emplacement de la reine à placé. plat est une liste qui donne l'emplacement des reines précédemment placées.
 
 safe_queens return le nombre de possibilité de placement de reine. 
+
 en V1.x la fonction va utilisé is_safe tant que mes liste sont inférieur a 10000000000, afin de print sous le format "9741306825" une liste de placement réalisable. Il y a un petit compteur dans la recursive pour le return final
+
 en v2.x la fonction prendra en entrez la taille X, Y de l'échiquier et donnera le nombre de possibilité correspondant. On fera également une heatmap pour voir les case les plus touchés.
 
 Exemple d'utilisation :
