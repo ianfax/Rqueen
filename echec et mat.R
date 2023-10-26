@@ -1,34 +1,31 @@
-# Clement Marchand
-# Projet des reines en R
-###############################################################################################
-#Librairies
+library(stringr)
 library(pheatmap) 
-###############################################################################################
-#init
-data <- c()
-###############################################################################################
-# Functions
 
-is_safe <- function(int, plat) {
-  if (grepl(int, plat)) {
+data <- c()
+
+is_safe <- function(row, col, int, plat) {
+  if(int %in% plat) {
     return(FALSE)
   } else {
-    num_plat = strsplit(plat, "")[[1]]
+    i = 0
     not_safe = ""
     
-    i <- 1
-    while (i <= length(num_plat)) {
-      num <- num_plat[i]
-      if (as.numeric(as.numeric(num) + (nchar(plat) + 1 - i)) <= 9) {
-        not_safe <- paste0(not_safe, as.numeric(num) + (nchar(plat) + 1 - i))
-      }
-      if (as.numeric(as.numeric(num) - (nchar(plat) + 1 - i)) >= 0) {
-        not_safe <- paste0(not_safe, as.numeric(num) - (nchar(plat) + 1 - i))
-      }
-      i <- i + 1
+    while(i < length(plat)) {
+      try(
+        {
+          if(as.numeric(as.numeric(plat[i+1]) + (length(plat) - i)) <= row-1) {
+            not_safe <- paste0(not_safe, as.numeric(plat[i+1]) + (length(plat) - i))
+          }
+          if(as.numeric(as.numeric(plat[i+1]) - (length(plat) - i)) >= 0) {
+            not_safe <- paste0(not_safe, as.numeric(plat[i+1]) - (length(plat) - i))
+          }  
+        }, 
+        silent=TRUE
+      )
+      i <- i + 1 
     }
     
-    if (grepl(int, not_safe)) {
+    if(grepl(int, not_safe)){
       return(FALSE)
     } else {
       return(TRUE)
@@ -36,14 +33,42 @@ is_safe <- function(int, plat) {
   }
 }
 
-heatmap <- function(data){
-  data[[1]] <- rev(data[[1]])
-  heatmap_matrix <- matrix(0, nrow = 10, ncol = 10)
+safe_queens <- function(row, col, plat = c(), compteur = 0) {
+  if(length(plat) == col) {
+    print(paste(plat, collapse="_"))
+    data <<- append(data, paste(plat, collapse = ""))
+    heatmap(data,row,col)
+    return(compteur + 1)
+  } else {
+    i <- 0
+    while(i < row) {
+      if(is_safe(row, col, i, plat)) {
+        plat <- append(plat, i)
+        compteur <- safe_queens(row, col, plat, compteur)
+        plat <- plat[-length(plat)]
+      }
+      i <- i + 1
+    }
+    
+    nb_X <- sum(plat == "X")
+    if (nb_X < max(row, col)-min(row, col)) {
+      plat <- append(plat, "X")
+      compteur <- safe_queens(row, col, plat, compteur)
+      plat <- plat[-length(plat)]
+    }
+  }
+  
+  return(compteur)
+}
+
+heatmap <- function(data,row,col){
+  
+  heatmap_matrix <- matrix(0, nrow = row, ncol = col)
   i <- 1
   while (i <= length(data)) {
     j <- 1
     while (j <= nchar(data[[i]])) {
-      value <- as.integer(substr(data[[i]], j, j)) + 1  
+      value <- as.integer(substr(data[[i]], j, j)) + 1  # Ajoutez 1 à l'indice de la colonne
       if (value != -1) {
         heatmap_matrix[j, value] <- heatmap_matrix[j, value] + 1
       }
@@ -51,29 +76,10 @@ heatmap <- function(data){
     }
     i <- i + 1
   }
+  
   pheatmap(heatmap_matrix, display_numbers = TRUE, fontsize = 8, cluster_cols = FALSE, cluster_rows = FALSE)
 }
 
-safe_queens <- function(plat, nombre_de_print = 0) {
-  if (nchar(plat) == 10) {
-    data <<- append(data, plat)
-    heatmap(data)
-    print(plat)
-    nombre_de_print <- nombre_de_print + 1
-  } else {
-    i <- 0
-    while (i <= 9) {
-      if (is_safe(i, plat)) {
-        plat <- paste0(plat, i)
-        nombre_de_print <- safe_queens(plat, nombre_de_print)
-        plat <- substring(plat, 0, nchar(plat) - 1)
-      }
-      i <- i + 1
-    }
-  }
-  return(nombre_de_print)
-}
-###############################################################################################
-safe_queens("")
 
-
+###################################################
+safe_queens(8,8)
