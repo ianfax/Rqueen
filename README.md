@@ -26,6 +26,10 @@ is_safe return true/false si pour savoir si je peux placer un reine à un certai
 
 safe_queens return le nombre de possibilité de placement de reine. 
 
+heatmap prend en parametre une liste de vecteur sous le format "9741306825", lis cette liste et affiche +1 au coordonées correspondantes dans une matrice puis affiche la matrice sous forme de heatmap
+
+## Historique des versions
+
 en V1.0 la fonction va utilisé is_safe tant que mes liste sont inférieur a 10000000000, afin de print sous le format "9741306825" une liste de placement réalisable. Il y a un petit compteur dans la recursive pour le return final
 
 en v1.1 la fonction affiche une heatmap des points les plus touchés par les queens dans l'échiquier
