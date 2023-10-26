@@ -1,6 +1,9 @@
 # Rqueen
 Auteur: Clement Marchand
 Cours de R BDAI 10/2023
+## Installation
+
+Nécessite R et la librairy pheatmap installé
 
 ## Description
 
@@ -23,9 +26,11 @@ is_safe return true/false si pour savoir si je peux placer un reine à un certai
 
 safe_queens return le nombre de possibilité de placement de reine. 
 
-en V1.x la fonction va utilisé is_safe tant que mes liste sont inférieur a 10000000000, afin de print sous le format "9741306825" une liste de placement réalisable. Il y a un petit compteur dans la recursive pour le return final
+en V1.0 la fonction va utilisé is_safe tant que mes liste sont inférieur a 10000000000, afin de print sous le format "9741306825" une liste de placement réalisable. Il y a un petit compteur dans la recursive pour le return final
 
-en v2.x la fonction prendra en entrez la taille X, Y de l'échiquier et donnera le nombre de possibilité correspondant. On fera également une heatmap pour voir les case les plus touchés.
+en v1.1 la fonction affiche une heatmap des points les plus touchés par les queens dans l'échiquier
+
+en v1.2 la fonction prendra les dimensions X Y de l'echiquier
 
 Exemple d'utilisation :
 
