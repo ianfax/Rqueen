@@ -3,7 +3,7 @@ Auteur: Clement Marchand
 Cours de R BDAI 10/2023
 ## Installation
 
-Nécessite R et la librairy pheatmap et stringr installé
+Nécessite R ainsi que les librairies pheatmap et stringr installées
 
 ## Description
 
