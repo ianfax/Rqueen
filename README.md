@@ -39,4 +39,4 @@ en v1.2 la fonction prendra les dimensions X Y de l'echiquier
 Exemple d'utilisation :
 
 ```R
-safe_queens("",10,10)
+safe_queens(X,Y)
