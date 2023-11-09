@@ -7,7 +7,7 @@ Nécessite R ainsi que les librairies pheatmap et stringr installées
 En installant Rstudio via https://www.rstudio.com/categories/rstudio-ide/
 cela install R en même temps.
 
-Il suffit ensuite d'ajouter les libraries pheatmap et stringr dans R studio à partir des menues outils > installer des librairies.
+Il suffit ensuite d'ajouter les libraries pheatmap et stringr dans R studio à partir des menus outils > installer des librairies.
 
 
 ## Description
