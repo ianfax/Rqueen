@@ -12,6 +12,10 @@ Il suffit ensuite d'ajouter les libraries pheatmap et stringr dans R studio à p
 
 ## Description
 
+RushR.R: petit exercice d'entrainement, rien de particulier ici.
+
+Rqueen.R:
+
 Ce projet consiste à écrire une fonction en R qui affiche toutes les possibilités de placer X dames sur un échiquier de X par Y sans qu'elles ne puissent s'atteindre en un seul coup. La récursivité devra être utilisée.
 La fonction doit afficher toutes les possibilités dans le format suivant :
 
